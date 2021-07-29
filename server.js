@@ -1,6 +1,7 @@
 const mysql = require('mysql');
 const inquirer = require('inquirer');
 const password = require('./config.js');
+const { connect } = require('http2');
 
 const connection = mysql.createConnection({
     host: 'localhost',
@@ -84,3 +85,12 @@ const viewEntity = () => {
         }
     });
 };
+
+const viewDepartments = () => {
+    const query = 'SELECT * FROM department';
+    connection.query(query, (err,data) => {
+        if (err) throw err;
+        console.table(data)
+        viewEntity()
+    })
+}
