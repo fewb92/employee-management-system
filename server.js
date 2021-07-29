@@ -143,3 +143,19 @@ const addEntity = () => {
         }
     });
 };
+
+const addDepartment = () => {
+    inquirer.prompt({
+        name: 'departmentName',
+        type: 'input',
+        message: 'Enter the department name you would like to add:'
+    })
+    .then(response => {
+        const query = 'INSERT INTO department SET ?';
+        connection.query(query, {name: response.departmentName}, (err, res) => {
+                if (err) throw err;
+                console.log(`Successfully department ${response.departmentName} has been added!`);
+                viewEntity();
+            });
+    });
+};
