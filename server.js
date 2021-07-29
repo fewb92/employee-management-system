@@ -110,3 +110,36 @@ const viewEmployees = () => {
         viewEntity()
     })
 }
+
+const addEntity = () => {
+    inquirer.prompt({
+        name: 'option',
+        type: 'rawlist',
+        message: 'Enter an entity to add:',
+        choices: [
+            'Department',
+            'Employee Role',
+            'Employee',
+            'Return to previous prompts!'
+        ],
+    })
+    .then(response => {
+        switch (response.option) {
+            case 'Department':
+                addDepartment();
+                break;
+            case 'Employee Role':
+                addRole();
+                break;
+            case 'Employee':
+                addEmployee();
+                break;
+            case 'Return to previous prompts!':
+                init();
+                break;
+            default: 
+            console.log(`Invalid optiion ${response.option}`);
+            break;
+        }
+    });
+};
