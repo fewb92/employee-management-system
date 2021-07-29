@@ -94,3 +94,19 @@ const viewDepartments = () => {
         viewEntity()
     })
 }
+const viewRoles = () => {
+    const query = 'SELECT * FROM role';
+    connection.query(query, (err,data) => {
+        if (err) throw err;
+        console.table(data)
+        viewEntity()
+    })
+}
+const viewEmployees = () => {
+    const query = 'SELECT * FROM employee';
+    connection.query(query, (err,data) => {
+        if (err) throw err;
+        console.table(data)
+        viewEntity()
+    })
+}
